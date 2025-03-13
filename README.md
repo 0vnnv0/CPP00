@@ -9,8 +9,3 @@ The first module focuses on the foundational elements of C++ programming, helpin
 - Initialization lists
 - Static and const keywords
 - Standard I/O streams (cin, cout, etc.)
-- What I Learned:
-
-Structuring code using namespaces and classes.
-Writing object-oriented programs with cleaner code.
-Using static and const for efficient and stable programs.
