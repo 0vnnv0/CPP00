@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:12:16 by anschmit          #+#    #+#             */
-/*   Updated: 2025/03/13 17:24:56 by anschmit         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:08:29 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	ft_add(Phonebook *book)
 
 void	ft_search(Phonebook *book)
 {
-	int	index;
+	int			index;
+	std::string input;
 	
 	if (book->get_contact_count() == 0)
 	{
@@ -59,12 +60,17 @@ void	ft_search(Phonebook *book)
 		<< "|" << std::endl;
 	}
 	std::cout << "\033[36mEnter the index of the contact to view: \033[0m";
-	std::cin >> index;
-	std::cin.ignore();
-	if (index >= 0 && index < book->get_contact_count())
-		book->display_contact(book->get_contact(index));
+	std::getline(std::cin, input);
+	std::istringstream iss(input);
+	if (iss >> index && iss.eof())
+	{
+		if (index >= 0 && index < book->get_contact_count())
+			book->display_contact(book->get_contact(index));
+		else
+			std::cout << "\033[31mInvalid index! Try again!\n\033[0m";
+	}
 	else
-		std::cout << "\033[31mInvalid index! Try again!\n\033[0m";
+		std::cout << "\033[31mInvalid Index! Try again!\n\033[0m";
 }
 
 int	main()
