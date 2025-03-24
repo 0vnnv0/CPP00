@@ -6,7 +6,7 @@
 /*   By: anschmit <anschmit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:35:11 by anschmit          #+#    #+#             */
-/*   Updated: 2025/03/12 18:00:36 by anschmit         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:16:38 by anschmit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ int	main(int argc, char **argv)
 	{
 		while (i < argc)
 		{
-			int j = 0;
-			while (argv[i][j])
+			std::string str(argv[i]);
+			for (std::string::iterator it = str.begin(); it < str.end(); it++)
 			{
-				argv[i][j] = std::toupper(argv[i][j]);
-				std::cout << argv[i][j];
-				j++; 
+				*it = std::toupper(*it);
 			}
+			std::cout << str;
 			i++;
 		}
 		std::cout << "\n";
